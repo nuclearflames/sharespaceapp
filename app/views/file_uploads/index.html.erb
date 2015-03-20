@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="row">
+      <div class="col-md-12 information-card">
+        <h1>Listing file uploads</h1>
+      </div>
+    </div>
+    <% @file_uploads.each do |file_upload| %>
+      <div class="row">
+        <div class="col-md-2 information-card">
+          <h5><%= file_upload.name %></h5>
+        </div>
+        <div class="col-md-2 information-card">
+          <h5><%= file_upload.description %></h5>
+        </div>
+        <div class="col-md-2 information-card">
+          <h5><%= file_upload.file %></h5>
+        </div>
+        <div class="col-md-2 information-card">
+          <h5><%= link_to 'Show', file_upload %></h5>
+        </div>
+        <div class="col-md-2 information-card">
+          <h5><%= link_to 'Edit', edit_file_upload_path(file_upload) %></h5>
+        </div>
+        <div class="col-md-2 information-card">
+          <h5><%= link_to 'Destroy', file_upload, method: :delete, data: { confirm: 'Are you sure?' } %></h5>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-12 information-card">
+        <%= link_to 'New File upload', new_file_upload_path %>
+      </div>
+    </div>
+  </div>
+</div>

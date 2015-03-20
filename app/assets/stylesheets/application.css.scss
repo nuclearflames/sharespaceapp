@@ -10,6 +10,48 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.main {
+  background-color: lightblue;
+  color: black;
+}
+
+a {
+  color: red;
+  &::hover {
+    color: darkred;
+    text-decoration: underline;
+  }
+}
+
+input, form, textarea {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: none;
+}
+
+.information-card {
+  border-radius: 10px;
+  background-color: blue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  color: white;
+  background-color: grey;
+  &::hover {
+    background-color: blue;
+  }
+}

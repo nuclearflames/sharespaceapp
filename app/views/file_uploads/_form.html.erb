@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for(@file_upload) do |f| %>
+      <% if @file_upload.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@file_upload.errors.count, "error") %> prohibited this file_upload from being saved:</h2>
+
+          <ul>
+          <% @file_upload.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_area :description %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.file_field :file %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
