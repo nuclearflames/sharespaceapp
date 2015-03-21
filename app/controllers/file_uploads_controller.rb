@@ -13,7 +13,7 @@ class FileUploadsController < ApplicationController
   # GET /file_uploads/1
   # GET /file_uploads/1.json
   def show
-    @file_upload = FileUpload.where(:user_id => params[:id])
+    @file_upload = FileUpload.where(:id => params[:id], :user_id => params[:user_id]).first
   end
 
   # GET /file_uploads/new
@@ -33,7 +33,7 @@ class FileUploadsController < ApplicationController
 
     respond_to do |format|
       if @file_upload.save
-        format.html { redirect_to @file_upload, notice: 'File upload was successfully created.' }
+        format.html { redirect_to file_upload_path(@user, @file_upload), notice: 'File upload was successfully created.' }
         format.json { render :show, status: :created, location: @file_upload }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class FileUploadsController < ApplicationController
   def update
     respond_to do |format|
       if @file_upload.update(file_upload_params)
-        format.html { redirect_to @file_upload, notice: 'File upload was successfully updated.' }
+        format.html { redirect_to file_upload_path(@user, @file_upload), notice: 'File upload was successfully updated.' }
         format.json { render :show, status: :ok, location: @file_upload }
       else
         format.html { render :edit }
@@ -78,6 +78,6 @@ class FileUploadsController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:user_id])
     end
 end

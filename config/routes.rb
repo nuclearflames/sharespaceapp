@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :users do
+  resources :users, param: :user_id do
     member do
       resources :file_uploads
     end
