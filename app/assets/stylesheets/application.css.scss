@@ -48,22 +48,26 @@ input, form, textarea {
 .information-card {
   color: rgba(204,178,76,1);
   border-radius: 10px;
-  background-color:rgba(255,253,192, 0.8);
+  background-color: rgba(255,253,192, 0.8);
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  a {
-    padding: 10px;
-    color: rgba(69,125,151,1);
-    &:hover {
-      color: gray;
-    }
-  }
   &.header {
-    color: white;
+    color: rgba(69,125,151,1);
     background-color: rgba(69,125,151,0.3);
     border-radius: 0;
+    a {
+      color: rgba(69,125,151,1);
+    }
+  }
+}
+
+a.information-card {
+  padding: 10px;
+  color: rgba(69,125,151,1);
+  &:hover {
+    color: gray;
   }
 }
 
