@@ -1,5 +1,8 @@
 class FileUploadsController < ApplicationController
-  before_action :set_file_upload, only: [:show, :edit, :update, :destroy]
+  before_filter :set_user
+  before_action :authenticate_user!
+  before_action :authenticate_current_user!
+  before_action :set_file_upload, only: [:edit, :update, :destroy]
 
   # GET /file_uploads
   # GET /file_uploads.json
@@ -10,6 +13,7 @@ class FileUploadsController < ApplicationController
   # GET /file_uploads/1
   # GET /file_uploads/1.json
   def show
+    @file_upload = FileUpload.where(:user_id => params[:id])
   end
 
   # GET /file_uploads/new
@@ -70,6 +74,10 @@ class FileUploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def file_upload_params
-      params.require(:file_upload).permit(:name, :description, :file)
+      params.require(:file_upload).permit(:name, :description, :file, :private)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 end

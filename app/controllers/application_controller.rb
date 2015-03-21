@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate_current_user!
+    if current_user != @user
+      redirect_to root_path, :notice => "Not yours to access!"
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :name, :tagline, :email, :password, :password_confirmation ) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :name, :tagline, :email, :password, :password_confirmation, :current_password ) }

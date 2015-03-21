@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @file_uploads = FileUpload.where(:user_id => @user.id)
+    @file_uploads = FileUpload.where(:user_id => @user.id, :private => false)
   end
 
   # GET /users/new

@@ -74,3 +74,16 @@ input, textarea {
     background-color: blue;
   }
 }
+
+.notice, .alert {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.notice {
+  background-color: rgb(247,214,131);
+}
+
+.alert {
+  background-color: rgb(204,178,76);
+}

@@ -14,7 +14,7 @@
           <h5><%= file_upload.description %></h5>
         </div>
         <div class="col-md-2 information-card">
-          <h5><%= file_upload.file %></h5>
+          <h5><%= link_to "Download", file_upload.file.url %></h5>
         </div>
         <div class="col-md-2 information-card">
           <h5><%= link_to 'Show', file_upload %></h5>

@@ -6,9 +6,16 @@
 
     <div class="row">
       <div class="col-md-12 information-card">
-        <h2>User has uploaded these files:</h2>
+        <h2>User is publically sharing these files:</h2>
       </div>
     </div>
+    <% if @file_uploads.count < 1 %>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 information-card">
+          <h5>User has publically shared no files!</h5>
+        </div>
+      </div>
+    <% end %>
     <% @file_uploads.each do |f| %>
       <div class="row">
         <div class="col-md-10 col-md-offset-1 information-card">
@@ -19,6 +26,11 @@
       </div>
     <% end %>
     <% if @user == current_user %>
+      <div class="row">
+        <div class="col-md-12 information-card">
+          <%= link_to "View all my files, public and private", file_uploads_path(current_user) %>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12 information-card">
           <%= link_to "Upload more files", new_file_upload_path(current_user) %>
