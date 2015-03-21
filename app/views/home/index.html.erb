@@ -1,18 +1,34 @@
-<% if current_user.blank? %>
-  <div class="row">
-    <div class="col-md-12">
-      <h3><%= link_to "Sign in", new_user_session_path %></h3>
+<div class="row">
+  <div class="col-md-4 col-sm-offset-4">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>View other peoples profiles:</h1>
+      </div>
     </div>
+    <% User.all.each do |f| %>
+      <%= link_to user_path(f) do %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <span><%= f.name %></span> | 
+                <span><%= f.tagline %></span> | 
+                <span><%= f.email %></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p><%= link_to "User has uploaded: #{f.file_uploads.count} files", user_path(f) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3><%= link_to "Sign up", new_user_registration_path %></h3>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12 header information-card">
+    <h1>Store your files on our cloud!</h1>
   </div>
-<% else %>
-  <div class="row">
-    <div class="col-md-12">
-      <h3><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h3>
-    </div>
-  </div>
-<% end %>
+</div>

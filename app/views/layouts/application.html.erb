@@ -11,18 +11,48 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1 main">
           <div class="row">
-            <div class="col-md-12">
-              <h1>Welcome to share space!</h1>
+            <div class="col-md-12 header information-card">
+              <div class="row">
+                <div class="col-md-8">
+                  <h1><%= link_to "Welcome to Share Space!", root_path %></h1>
+                  <h3><%= link_to "View my profile", user_path(current_user) %></h3>
+                </div>
+                <div class="col-md-4">
+                  <% if current_user.blank? %>
+                    <div class="row">
+                      <div class="col-md-12 information-card">
+                        <h3><%= link_to "Sign in", new_user_session_path, :class=>"information-card" %></h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 information-card">
+                        <h3><%= link_to "Sign up", new_user_registration_path, :class=>"information-card" %></h3>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3><%= link_to "Sign out", destroy_user_session_path, method: :delete, :class=>"information-card" %></h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3><%= link_to "Edit your profile", edit_user_registration_path, :class=>"information-card" %></h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3><%= link_to "Upload a file", new_file_upload_path(current_user), :class=>"information-card" %></h3>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
               <%= yield %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <h1>Store your files on our cloud!</h1>
             </div>
           </div>
         </div>

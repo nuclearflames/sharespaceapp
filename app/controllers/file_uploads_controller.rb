@@ -25,6 +25,7 @@ class FileUploadsController < ApplicationController
   # POST /file_uploads.json
   def create
     @file_upload = FileUpload.new(file_upload_params)
+    @file_upload.user_id = current_user.id
 
     respond_to do |format|
       if @file_upload.save
