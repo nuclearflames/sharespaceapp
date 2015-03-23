@@ -20,12 +20,12 @@
                 <div class="col-md-4">
                   <% if current_user.blank? %>
                     <div class="row">
-                      <div class="col-md-12 information-card">
+                      <div class="col-md-12">
                         <h3><%= link_to "Sign in", new_user_session_path, :class=>"information-card" %></h3>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-12 information-card">
+                      <div class="col-md-12">
                         <h3><%= link_to "Sign up", new_user_registration_path, :class=>"information-card" %></h3>
                       </div>
                     </div>
