@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <%= form_for(@file_upload) do |f| %>
+    <%= form_for(@file_upload, url: action_name == "edit" ? edit_file_upload_path(params[:user_id], @file_upload) : new_file_upload_path(params[:user_id], @file_upload)) do |f| %>
       <% if @file_upload.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@file_upload.errors.count, "error") %> prohibited this file_upload from being saved:</h2>
