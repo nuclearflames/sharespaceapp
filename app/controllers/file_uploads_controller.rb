@@ -7,7 +7,7 @@ class FileUploadsController < ApplicationController
   # GET /file_uploads
   # GET /file_uploads.json
   def index
-    @file_uploads = FileUpload.all
+    @file_uploads = FileUpload.where(:user_id => params[:user_id])
   end
 
   # GET /file_uploads/1
